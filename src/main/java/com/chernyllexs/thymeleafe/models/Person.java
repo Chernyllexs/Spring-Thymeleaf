@@ -1,14 +1,28 @@
 package com.chernyllexs.thymeleafe.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class Person {
     private int id;
+    @Size(message = "Surname should be between 2 and 20 symbols")
     private String surname;
+    @Size(message = "Name should be between 2 and 20 symbols")
     private String name;
+    @Size(message = "Patronymic should be between 2 and 20 symbols")
     private String patronymic;
+    @
     private int age;
     private double salary;
+    @NotEmpty(message = "Should not be empty")
+    @Email
     private String email;
+    @NotEmpty(message = "Should not be empty")
     private String department;
+
+    public Person() {
+    }
 
     public Person(int id, String surname, String name, String patronymic) {
         this.id = id;
@@ -91,6 +105,11 @@ public class Person {
     public void setDepartment(String department) {
         this.department = department;
     }
+
+    public String getFio(){
+        return surname + " " + name + " " + patronymic;
+    }
+
 
     @Override
     public String toString() {

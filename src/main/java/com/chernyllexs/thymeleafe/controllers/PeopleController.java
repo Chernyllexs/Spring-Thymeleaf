@@ -1,12 +1,11 @@
 package com.chernyllexs.thymeleafe.controllers;
 
 import com.chernyllexs.thymeleafe.dao.PersonDAO;
+import com.chernyllexs.thymeleafe.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/people")
@@ -22,13 +21,24 @@ public class PeopleController {
     @GetMapping()
     public String index(Model model){
         model.addAttribute("people",personDAO.index());
-        return "people/index";
+        return "/people/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
         model.addAttribute("person", personDAO.show(id));
-        return "people/show";
+        return "/people/show";
+    }
+
+    @GetMapping("/new")
+    public String newPerson(@ModelAttribute("person") Person person){
+        return "/people/new";
+    }
+
+    @PostMapping()
+    public String create(@ModelAttribute("person") Person person){
+        personDAO.add(person);
+        return "redirect:/people";
     }
 
 }

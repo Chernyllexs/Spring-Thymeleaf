@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleafe">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Person</title>
+</head>
+<body>
+    <form th:method="POST" th:action="@{/people}" th:object="${person}">
+        <label for="surname">Enter surname: </label>
+        <input type="text" th:field="*{surname}" id="surname">
+        <br><br>
+        <label for="name">Enter name: </label>
+        <input type="text" th:field="*{name}" id="name">
+        <br><br>
+        <label for="patronymic">Enter patronymic: </label>
+        <input type="text" th:field="*{patronymic}" id="patronymic">
+        <br><br>
+        <label for="age">Enter age: </label>
+        <input type="text" th:field="*{age}" id="age">
+        <br><br>
+        <label for="salary">Enter salary: </label>
+        <input type="text" th:field="*{salary}" id="salary">
+        <br><br>
+        <label for="email">Enter email: </label>
+        <input type="text" th:field="*{email}" id="email">
+        <br><br>
+        <label for="department">Enter department: </label>
+        <input type="text" th:field="*{department}" id="department">
+
+        <br><br>
+        <input type="submit" value="Add new person"/>
+    </form>
+</body>
+</html>

@@ -52,12 +52,12 @@ public class PeopleController {
         return "/people/find";
     }
 
-    @PostMapping()
-    public String find(@ModelAttribute("searchPerson") @Valid SearchPerson searchPerson, BindingResult bindingResult, Model model){
+    /*@PostMapping()
+    public String find( @Valid SearchPerson searchPerson, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors())
             return "/people/find";
         //personDAO.search(searchPerson);
-        model.addAttribute("searchPerson", personDAO.search(searchPerson));
+        //model.addAttribute("searchPerson", personDAO.search(searchPerson));
         return "/people/show";
-    }
+    }*/
 }

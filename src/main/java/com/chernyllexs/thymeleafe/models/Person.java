@@ -1,19 +1,26 @@
 package com.chernyllexs.thymeleafe.models;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class Person {
     private int id;
+    @NotEmpty(message = "Should not be empty")
     @Size(message = "Surname should be between 2 and 20 symbols")
     private String surname;
+    @NotEmpty(message = "Should not be empty")
     @Size(message = "Name should be between 2 and 20 symbols")
     private String name;
+    @NotEmpty(message = "Should not be empty")
     @Size(message = "Patronymic should be between 2 and 20 symbols")
     private String patronymic;
-    @
+
+    @Min(value = 0, message = "Age should be greater than 0")
     private int age;
+
+    @Min(value = 0, message = "Salary should be greater than 0")
     private double salary;
     @NotEmpty(message = "Should not be empty")
     @Email
@@ -106,22 +113,23 @@ public class Person {
         this.department = department;
     }
 
-    public String getFio(){
+    public String getFio() {
         return surname + " " + name + " " + patronymic;
     }
 
 
     @Override
     public String toString() {
-        return "People{" +
-                "id=" + id +
-                ", surname='" + surname + '\'' +
-                ", name='" + name + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", age=" + age +
-                ", salary=" + salary +
-                ", email='" + email + '\'' +
-                ", department='" + department + '\'' +
-                '}';
+        final String DELIMITER = "/";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(id + DELIMITER)
+                .append(surname + DELIMITER)
+                .append(name + DELIMITER)
+                .append(patronymic + DELIMITER)
+                .append(age + DELIMITER)
+                .append(salary + DELIMITER)
+                .append(email + DELIMITER)
+                .append(department);
+        return stringBuilder.toString();
     }
 }

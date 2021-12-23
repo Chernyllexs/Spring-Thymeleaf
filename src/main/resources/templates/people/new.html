@@ -8,26 +8,32 @@
     <form th:method="POST" th:action="@{/people}" th:object="${person}">
         <label for="surname">Enter surname: </label>
         <input type="text" th:field="*{surname}" id="surname">
-        <br><br>
+        <div style="color: red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"> Surname error</div>
+        <br/>
         <label for="name">Enter name: </label>
         <input type="text" th:field="*{name}" id="name">
-        <br><br>
+        <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> Name error</div>
+        <br/>
         <label for="patronymic">Enter patronymic: </label>
         <input type="text" th:field="*{patronymic}" id="patronymic">
-        <br><br>
+        <div style="color: red" th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}"> Patronymic error</div>
+        <br/>
         <label for="age">Enter age: </label>
         <input type="text" th:field="*{age}" id="age">
-        <br><br>
+        <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"> Age error</div>
+        <br/>
         <label for="salary">Enter salary: </label>
         <input type="text" th:field="*{salary}" id="salary">
-        <br><br>
+        <div style="color: red" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"> Salary error</div>
+        <br/>
         <label for="email">Enter email: </label>
         <input type="text" th:field="*{email}" id="email">
-        <br><br>
+        <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Email error</div>
+        <br/>
         <label for="department">Enter department: </label>
         <input type="text" th:field="*{department}" id="department">
-
-        <br><br>
+        <div style="color: red" th:if="${#fields.hasErrors('department')}" th:errors="*{department}"> Department error</div>
+        <br/><br/>
         <input type="submit" value="Add new person"/>
     </form>
 </body>

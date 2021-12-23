@@ -1,6 +1,7 @@
 package com.chernyllexs.thymeleafe.dao;
 
 import com.chernyllexs.thymeleafe.models.Person;
+import com.chernyllexs.thymeleafe.models.SearchPerson;
 import com.chernyllexs.thymeleafe.util.FileIO;
 import org.springframework.stereotype.Component;
 
@@ -32,5 +33,9 @@ public class PersonDAO {
         person.setId(people.size() + 1);
         people.add(person);
         FileIO.writeToFile(people);
+    }
+
+    public Person search(SearchPerson searchPerson){
+        return people.stream().filter(person -> person.getName().equals(searchPerson.getName()) && person.getSurname().equals(searchPerson.getSurname())).findAny().orElse(null);
     }
 }

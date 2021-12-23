@@ -2,6 +2,7 @@ package com.chernyllexs.thymeleafe.controllers;
 
 import com.chernyllexs.thymeleafe.dao.PersonDAO;
 import com.chernyllexs.thymeleafe.models.Person;
+import com.chernyllexs.thymeleafe.models.SearchPerson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,15 +48,16 @@ public class PeopleController {
     }
 
     @GetMapping("/find")
-    public String findPerson(@ModelAttribute("person") Person person){
+    public String findPerson(@ModelAttribute("person") SearchPerson searchPerson){
         return "/people/find";
     }
 
     @PostMapping()
-    public String find(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult){
+    public String find(@ModelAttribute("searchPerson") @Valid SearchPerson searchPerson, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors())
             return "/people/find";
-        personDAO.add(person);
-        return "redirect:/people";
+        //personDAO.search(searchPerson);
+        model.addAttribute("searchPerson", personDAO.search(searchPerson));
+        return "/people/show";
     }
 }

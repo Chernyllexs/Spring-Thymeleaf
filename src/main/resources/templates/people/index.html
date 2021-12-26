@@ -15,22 +15,37 @@
         <th>Salary</th>
         <th>eMail</th>
         <th>Department</th>
+        <th>Send eMail</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="person : ${people}">
         <td th:text="${person.getId()}">id</td>
         <td th:text="${person.getFio()}">fio</td>
-        <!--<td><a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getFio()}" >fio</a></td>-->
         <td th:text="${person.getAge()}">age</td>
         <td th:text="${person.getSalary()}">salary</td>
         <td th:text="${person.getEmail()}">eMail</td>
         <td th:text="${person.getDepartment()}">department</td>
+        <!--<td><a th:href="@{/people/{id}(id=${person.getId()})}" th:text="send mail">send mail</a></td>-->
+
     </tr>
     </tbody>
 </table>
 <br>
-<a href="/people/new">Add person</a>
-<a href="/people/find">Find person</a>
+<!--<a href="/people/new">Add person</a>
+<a href="/people/find">Find person</a>-->
+
+<form method="get" th:action="@{/people/new}">
+    <button type="submit"> Add person</button>
+</form>
+
+<form method="get" th:action="@{/people/find}">
+    <button type="submit">Find person</button>
+</form>
+
+<form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">Upload File</button>
+</form>
 </body>
 </html>

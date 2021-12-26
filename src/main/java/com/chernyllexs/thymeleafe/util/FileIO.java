@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileIO {
-    private static final String FILE_NAME = "src\\people.txt";
 
-    public static List<Person> readFromFile() {
+
+    public static List<Person> readFromFile(String fileName) {
         List<Person> people = new ArrayList<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_NAME))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             while (bufferedReader.ready()) {
                 Person person = getPerson(bufferedReader.readLine());
                 people.add(person);
@@ -39,12 +39,9 @@ public class FileIO {
         return new Person(id, surname, name, patronymic, age, salary, email, department);
     }
 
-    public static void writeToFile(List<Person> people) {
+    public static void writeToFile(List<Person> people, String fileName) {
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE_NAME))) {
-            /*for (Person person : people) {
-                bufferedWriter.write(person.toString() + '\n');
-            }*/
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))) {
             for (int i = 0; i < people.size(); i++) {
                 String line = people.get(i).toString();
                 if(i != people.size() - 1)

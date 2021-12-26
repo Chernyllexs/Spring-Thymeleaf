@@ -5,21 +5,14 @@ import com.chernyllexs.thymeleafe.models.SearchPerson;
 import com.chernyllexs.thymeleafe.util.FileIO;
 import org.springframework.stereotype.Component;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @Component
 public class PersonDAO {
     private static int PEOPLE_COUNT;
-    private List<Person> people = FileIO.readFromFile();
-
-    /*{
-        people = new ArrayList<>();
-
-        people.add(new Person(++PEOPLE_COUNT,"Anderson","Tom","Ivanovich",49,22800.777,"tom@mai.ru","NNTU"));
-        people.add(new Person(++PEOPLE_COUNT,"Akimov","Gleb","Igorevich", 35,777.777,"gleb@mail.ru","NC"));
-        people.add(new Person(++PEOPLE_COUNT,"Saveliev","Vitaly ","Alekseevich",22,100,"vit@mail.ru","NC"));
-        people.add(new Person(++PEOPLE_COUNT,"Alekseyev ","Rostislav  ","Evgenievich",55,500,"alex@mail.ru","KFC"));
-    }*/
+    private static final String FILE_DATABASE_NAME = "src\\people.txt";
+    private List<Person> people = FileIO.readFromFile(FILE_DATABASE_NAME);
 
     public List<Person> index() {
         return people;
@@ -32,10 +25,21 @@ public class PersonDAO {
     public void add(Person person) {
         person.setId(people.size() + 1);
         people.add(person);
-        FileIO.writeToFile(people);
+        FileIO.writeToFile(people, FILE_DATABASE_NAME);
     }
 
     public Person search(SearchPerson searchPerson){
         return people.stream().filter(person -> person.getName().equals(searchPerson.getName()) && person.getSurname().equals(searchPerson.getSurname())).findAny().orElse(null);
+    }
+
+    public void uploadPerson(Path path){
+        if (path == null)
+            return;
+        people.addAll(FileIO.readFromFile(path.toString()));
+
+        for (int i = 0; i < people.size(); i++) {
+            people.get(i).setId(i+1);
+        }
+        FileIO.writeToFile(people, FILE_DATABASE_NAME);
     }
 }

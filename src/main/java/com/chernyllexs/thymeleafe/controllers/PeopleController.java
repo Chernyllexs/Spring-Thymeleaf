@@ -23,41 +23,49 @@ public class PeopleController {
     }
 
     @GetMapping()
-    public String index(Model model){
-        model.addAttribute("people",personDAO.index());
+    public String index(Model model) {
+        model.addAttribute("people", personDAO.index());
         return "/people/index";
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model){
+    public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", personDAO.show(id));
         return "/people/show";
     }
 
     @GetMapping("/new")
-    public String newPerson(@ModelAttribute("person") Person person){
+    public String newPerson(@ModelAttribute("person") Person person) {
         return "/people/new";
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult){
-        if(bindingResult.hasErrors())
+    public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
             return "/people/new";
         personDAO.add(person);
         return "redirect:/people";
     }
 
     @GetMapping("/find")
-    public String findPerson(@ModelAttribute("person") SearchPerson searchPerson){
+    public String findPerson(@ModelAttribute("searchPerson") SearchPerson searchPerson) {
         return "/people/find";
     }
 
-    /*@PostMapping()
-    public String find( @Valid SearchPerson searchPerson, BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors())
+    @PostMapping("/find")
+    public String find(@ModelAttribute("searchPerson") @Valid SearchPerson searchPerson, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
             return "/people/find";
-        //personDAO.search(searchPerson);
-        //model.addAttribute("searchPerson", personDAO.search(searchPerson));
-        return "/people/show";
-    }*/
+
+        Person person = personDAO.search(searchPerson);
+        if (person != null)
+            return "redirect:/people/" + person.getId();
+        else
+            return "redirect:/people/not-found";
+    }
+
+    @GetMapping("/not-found")
+    public String showNotFound() {
+        return "/people/not-found";
+    }
 }

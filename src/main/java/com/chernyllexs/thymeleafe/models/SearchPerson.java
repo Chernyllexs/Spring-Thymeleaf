@@ -11,7 +11,7 @@ public class SearchPerson {
     @Size(message = "Name should be between 2 and 20 symbols")
     private String name;
 
-    public SearchPerson(@NotEmpty(message = "Should not be empty") @Size(message = "Surname should be between 2 and 20 symbols") String surname, @NotEmpty(message = "Should not be empty") @Size(message = "Name should be between 2 and 20 symbols") String name) {
+    public SearchPerson(String surname, String name) {
         this.surname = surname;
         this.name = name;
     }

@@ -5,7 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<p th:text="${person.getName()}">VALUE</p>
-<p th:text="${person.toString()}">VALUE</p>
+<h2>Person card</h2>
+<p th:text="${'ID: ' + person.getId()}">id</p>
+<p th:text="${'FIO: ' + person.getFio()}">fio</p>
+<p th:text="${'Age: ' + person.getAge()}">age</p>
+<p th:text="${'Salary: ' + person.getSalary()}">salary</p>
+<p th:text="${'eMail: ' + person.getEmail()}">eMail</p>
+<p th:text="${'Department: ' + person.getDepartment()}">department</p>
+<p th:text="${'Current time: ' + #dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}">department</p>
+<p th:text="${'User agent: ' + #httpServletRequest.getHeader('User-Agent')}">department</p>
 </body>
 </html>

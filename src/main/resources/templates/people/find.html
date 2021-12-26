@@ -5,7 +5,7 @@
     <title>Find person</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/people}" th:object="${person}">
+<form th:method="POST" th:action="@{/people/find}" th:object="${searchPerson}">
     <label for="surname">Enter surname: </label>
     <input type="text" th:field="*{surname}" id="surname">
     <div style="color: red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"> Surname error</div>

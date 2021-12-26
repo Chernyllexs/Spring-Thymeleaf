@@ -20,7 +20,8 @@
     <tbody>
     <tr th:each="person : ${people}">
         <td th:text="${person.getId()}">id</td>
-        <td><a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getFio()}" >fio</a></td>
+        <td th:text="${person.getFio()}">fio</td>
+        <!--<td><a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getFio()}" >fio</a></td>-->
         <td th:text="${person.getAge()}">age</td>
         <td th:text="${person.getSalary()}">salary</td>
         <td th:text="${person.getEmail()}">eMail</td>

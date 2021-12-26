@@ -5,14 +5,14 @@
     <title>Find person</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/people/find}" th:object="${searchPerson}">
+<form th:action="@{/people/find}" th:method="POST" th:object="${searchPerson}">
     <label for="surname">Enter surname: </label>
-    <input type="text" th:field="*{surname}" id="surname">
-    <div style="color: red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"> Surname error</div>
+    <input id="surname" th:field="*{surname}" type="text">
+    <div style="color: red" th:errors="*{surname}" th:if="${#fields.hasErrors('surname')}"> Surname error</div>
     <br/>
     <label for="name">Enter name: </label>
-    <input type="text" th:field="*{name}" id="name">
-    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> Name error</div>
+    <input id="name" th:field="*{name}" type="text">
+    <div style="color: red" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"> Name error</div>
     <br/>
     <input type="submit" value="Find person"/>
 </form>

@@ -6,15 +6,19 @@
 </head>
 <body>
 <form th:method="POST" th:action="@{/people/send/}" th:object="${email}">
-    <label for="surname">Enter surname: </label>
-    <input type="text" th:field="*{surname}" id="surname">
-    <div style="color: red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"> Surname error</div>
+    <label for="emailAddress">Enter email address: </label>
+    <input type="text" th:field="*{emailAddress}" id="emailAddress">
     <br/>
-    <label for="name">Enter name: </label>
-    <input type="text" th:field="*{name}" id="name">
-    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> Name error</div>
+
+    <label for="title">Enter title: </label>
+    <input type="text" th:field="*{title}" id="title">
+
     <br/>
-    <input type="submit" value="Find person"/>
+    <label for="message">Enter message: </label>
+    <input type="text" th:field="*{message}" id="message">
+
+    <br/>
+    <input type="submit" value="Send eMail"/>
 </form>
 
 </body>

@@ -10,7 +10,6 @@ import java.util.List;
 
 @Component
 public class PersonDAO {
-    private static int PEOPLE_COUNT;
     private static final String FILE_DATABASE_NAME = "src\\people.txt";
     private List<Person> people = FileIO.readFromFile(FILE_DATABASE_NAME);
 
@@ -28,17 +27,17 @@ public class PersonDAO {
         FileIO.writeToFile(people, FILE_DATABASE_NAME);
     }
 
-    public Person search(SearchPerson searchPerson){
+    public Person search(SearchPerson searchPerson) {
         return people.stream().filter(person -> person.getName().equals(searchPerson.getName()) && person.getSurname().equals(searchPerson.getSurname())).findAny().orElse(null);
     }
 
-    public void uploadPerson(Path path){
+    public void uploadPerson(Path path) {
         if (path == null)
             return;
         people.addAll(FileIO.readFromFile(path.toString()));
 
         for (int i = 0; i < people.size(); i++) {
-            people.get(i).setId(i+1);
+            people.get(i).setId(i + 1);
         }
         FileIO.writeToFile(people, FILE_DATABASE_NAME);
     }

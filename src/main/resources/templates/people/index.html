@@ -32,8 +32,6 @@
     </tbody>
 </table>
 <br>
-<!--<a href="/people/new">Add person</a>
-<a href="/people/find">Find person</a>-->
 
 <form method="get" th:action="@{/people/new}">
     <button type="submit"> Add person</button>
@@ -43,8 +41,8 @@
     <button type="submit">Find person</button>
 </form>
 <br/>
-<form method="post" th:action="@{/upload}" enctype="multipart/form-data">
-    <input type="file" name="file">
+<form enctype="multipart/form-data" method="post" th:action="@{/upload}">
+    <input name="file" type="file">
     <button type="submit">Upload File</button>
 </form>
 </body>

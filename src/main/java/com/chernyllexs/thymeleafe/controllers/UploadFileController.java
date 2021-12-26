@@ -21,13 +21,13 @@ public class UploadFileController {
     private final PersonDAO personDAO;
 
     @Autowired
-    public UploadFileController( PersonDAO personDAO) {
+    public UploadFileController(PersonDAO personDAO) {
         this.personDAO = personDAO;
     }
 
 
     @PostMapping("/upload")
-    public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes attributes){
+    public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes attributes) {
         if (file.isEmpty()) {
             attributes.addFlashAttribute("message", "Please select a file to upload.");
             return "redirect:/people/";
@@ -40,7 +40,7 @@ public class UploadFileController {
             path = Paths.get(UPLOAD_DIR + file.getOriginalFilename());
             Files.write(path, bytes);
 
-            attributes.addFlashAttribute("message","You successfully uploaded '" + file.getOriginalFilename() + "'");
+            attributes.addFlashAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
         } catch (IOException e) {
             e.printStackTrace();
         }

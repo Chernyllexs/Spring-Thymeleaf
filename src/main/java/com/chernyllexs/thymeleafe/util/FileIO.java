@@ -44,7 +44,7 @@ public class FileIO {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))) {
             for (int i = 0; i < people.size(); i++) {
                 String line = people.get(i).toString();
-                if(i != people.size() - 1)
+                if (i != people.size() - 1)
                     line += '\n';
                 bufferedWriter.write(line);
             }

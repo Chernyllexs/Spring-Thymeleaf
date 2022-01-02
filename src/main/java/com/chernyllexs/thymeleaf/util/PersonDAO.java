@@ -1,8 +1,8 @@
-package com.chernyllexs.thymeleafe.dao;
+package com.chernyllexs.thymeleaf.util;
 
-import com.chernyllexs.thymeleafe.models.Person;
-import com.chernyllexs.thymeleafe.models.SearchPerson;
-import com.chernyllexs.thymeleafe.util.FileIO;
+import com.chernyllexs.thymeleaf.models.Person;
+import com.chernyllexs.thymeleaf.models.SearchPerson;
+import com.chernyllexs.thymeleaf.util.FileIO;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;

@@ -1,4 +1,4 @@
-package com.chernyllexs.thymeleafe.models;
+package com.chernyllexs.thymeleaf.models;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;

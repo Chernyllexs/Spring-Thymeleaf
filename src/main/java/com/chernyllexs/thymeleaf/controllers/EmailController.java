@@ -1,7 +1,7 @@
-package com.chernyllexs.thymeleafe.controllers;
+package com.chernyllexs.thymeleaf.controllers;
 
-import com.chernyllexs.thymeleafe.models.Email;
-import com.chernyllexs.thymeleafe.util.EmailSender;
+import com.chernyllexs.thymeleaf.models.Email;
+import com.chernyllexs.thymeleaf.util.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

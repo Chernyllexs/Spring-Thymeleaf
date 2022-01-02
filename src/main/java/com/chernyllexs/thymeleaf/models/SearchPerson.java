@@ -1,4 +1,4 @@
-package com.chernyllexs.thymeleafe.models;
+package com.chernyllexs.thymeleaf.models;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;

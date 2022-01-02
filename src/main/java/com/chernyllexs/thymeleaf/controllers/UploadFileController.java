@@ -1,6 +1,6 @@
-package com.chernyllexs.thymeleafe.controllers;
+package com.chernyllexs.thymeleaf.controllers;
 
-import com.chernyllexs.thymeleafe.dao.PersonDAO;
+import com.chernyllexs.thymeleaf.util.PersonDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;

@@ -1,4 +1,4 @@
-package com.chernyllexs.thymeleafe.models;
+package com.chernyllexs.thymeleaf.models;
 
 public class Email {
     String emailAddress;

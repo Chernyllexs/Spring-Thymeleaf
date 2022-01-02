@@ -1,4 +1,4 @@
-package com.chernyllexs.thymeleafe;
+package com.chernyllexs.thymeleaf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

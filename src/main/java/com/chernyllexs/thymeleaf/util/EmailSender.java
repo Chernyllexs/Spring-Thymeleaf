@@ -1,6 +1,6 @@
-package com.chernyllexs.thymeleafe.util;
+package com.chernyllexs.thymeleaf.util;
 
-import com.chernyllexs.thymeleafe.models.Email;
+import com.chernyllexs.thymeleaf.models.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;

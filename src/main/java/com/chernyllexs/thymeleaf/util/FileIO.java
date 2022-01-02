@@ -1,6 +1,6 @@
-package com.chernyllexs.thymeleafe.util;
+package com.chernyllexs.thymeleaf.util;
 
-import com.chernyllexs.thymeleafe.models.Person;
+import com.chernyllexs.thymeleaf.models.Person;
 
 import java.io.*;
 import java.util.ArrayList;
